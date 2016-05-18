@@ -25,8 +25,86 @@
         <value>org.apache.gora.mongodb.store.MongoStore</value>
         <description>Default class for storing data</description>
     </property>
+
     <property>
         <name>http.agent.name</name>
         <value>QuickFind Crawler</value>
     </property>
+
+    <!-- generate properties -->
+
+    <property>
+        <name>generate.max.count</name>
+        <value>300</value>
+        <description>The maximum number of urls in a single
+            fetchlist.  -1 if unlimited. The urls are counted according
+            to the value of the parameter generator.count.mode.
+        </description>
+    </property>
+
+    <property>
+        <name>generate.count.mode</name>
+        <value>domain</value>
+        <description>Determines how the URLs are counted for generator.max.count.
+            Default value is 'host' but can be 'domain'. Note that we do not count
+            per IP in the new version of the Generator.
+        </description>
+    </property>
+
+    <!-- urlpartitioner properties -->
+
+    <property>
+        <name>partition.url.mode</name>
+        <value>byDomain</value>
+        <description>Determines how to partition URLs. Default value is 'byHost',
+            also takes 'byDomain' or 'byIP'.
+        </description>
+    </property>
+
+    <!-- fetcher properties -->
+
+    <property>
+        <name>fetcher.server.delay</name>
+        <value>1.0</value>
+        <description>The number of seconds the fetcher will delay between
+            successive requests to the same server. Note that this might get
+            overriden by a Crawl-Delay from a robots.txt and is used ONLY if
+            fetcher.threads.per.queue is set to 1.
+        </description>
+    </property>
+
+    <property>
+        <name>fetcher.threads.per.queue</name>
+        <value>1</value>
+        <description>This number is the maximum number of threads that
+            should be allowed to access a queue at one time. Setting it to
+            a value > 1 will cause the Crawl-Delay value from robots.txt to
+            be ignored and the value of fetcher.server.min.delay to be used
+            as a delay between successive requests to the same server instead
+            of fetcher.server.delay.
+        </description>
+    </property>
+
+    <property>
+        <name>fetcher.queue.mode</name>
+        <value>byDomain</value>
+        <description>Determines how the URLs are placed into queues.
+            Allowed values are 'byHost', 'byDomain' and 'byIP'.
+            The value would usually correspond to that of 'partition.url.mode'.
+        </description>
+    </property>
+
+    <property>
+        <name>fetcher.parse</name>
+        <value>false</value>
+        <description>If true, fetcher will parse content. NOTE: previous releases would
+            default to true. Since 2.0 this is set to false as a safer default.</description>
+    </property>
+
+    <property>
+        <name>fetcher.store.content</name>
+        <value>true</value>
+        <description>If true, fetcher will store content.</description>
+    </property>
+
 </configuration>
