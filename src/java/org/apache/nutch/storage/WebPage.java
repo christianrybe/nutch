@@ -40,8 +40,8 @@ public class WebPage extends org.apache.gora.persistency.impl.PersistentBase
         14, "text"), PARSE_STATUS(15, "parseStatus"), SCORE(16, "score"), REPR_URL(
         17, "reprUrl"), HEADERS(18, "headers"), OUTLINKS(19, "outlinks"), INLINKS(
         20, "inlinks"), MARKERS(21, "markers"), METADATA(22, "metadata"), BATCH_ID(
-        23, "batchId"), ;
-    /**
+        23, "batchId"), HOST(24, "host");
+    /**`
      * Field's index.
      */
     private int index;
@@ -226,6 +226,8 @@ public class WebPage extends org.apache.gora.persistency.impl.PersistentBase
    * cycle) based on batchId.
    */
   private java.lang.CharSequence batchId;
+
+  private java.lang.CharSequence host;
 
   public org.apache.avro.Schema getSchema() {
     return SCHEMA$;
@@ -1067,6 +1069,16 @@ public class WebPage extends org.apache.gora.persistency.impl.PersistentBase
     this.markers = (value instanceof org.apache.gora.persistency.Dirtyable) ? value
         : new org.apache.gora.persistency.impl.DirtyMapWrapper(value);
     setDirty(21);
+  }
+
+  /**
+   * Sets the value of the 'host' field. The original associated with this
+   * WebPage
+   * @param value the value to set
+   */
+  public void setHost(java.lang.CharSequence value) {
+    this.host = value;
+    setDirty(24);
   }
 
   /**
