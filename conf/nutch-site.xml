@@ -35,7 +35,7 @@
 
     <property>
         <name>generate.max.count</name>
-        <value>300</value>
+        <value>20</value>
         <description>The maximum number of urls in a single
             fetchlist.  -1 if unlimited. The urls are counted according
             to the value of the parameter generator.count.mode.
@@ -75,7 +75,7 @@
 
     <property>
         <name>fetcher.threads.per.queue</name>
-        <value>1</value>
+        <value>50</value>
         <description>This number is the maximum number of threads that
             should be allowed to access a queue at one time. Setting it to
             a value > 1 will cause the Crawl-Delay value from robots.txt to

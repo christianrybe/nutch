@@ -7,3 +7,4 @@ http://www.mcdonalds.co.uk/ukhome.html
 https://www.kfc.co.uk/
 http://www.burgerking.co.uk/
 http://www.telegraph.co.uk/travel/destinations/europe/united-kingdom/england/london/articles/Londons-best-restaurants/
+http://www.dmoz.org/Recreation/Food/
