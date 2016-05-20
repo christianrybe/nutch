@@ -43,6 +43,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.nio.ByteBuffer;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -156,6 +158,13 @@ public class InjectorJob extends NutchTool implements Tool {
       } else { // if it passes
         String reversedUrl = TableUtil.reverseUrl(url); // collect it
         WebPage row = WebPage.newBuilder().build();
+        URI uri = null;
+        try {
+          uri = new URI(url);
+        } catch (URISyntaxException e) {
+          LOG.error("Cannot parse the URI", e);
+        }
+        row.setHost(new Utf8(uri.getHost()));
         row.setFetchTime(curTime);
         row.setFetchInterval(customInterval);
 
