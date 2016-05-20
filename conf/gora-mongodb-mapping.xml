@@ -35,7 +35,8 @@
         <field name="modifiedTime" docfield="modifiedTime" type="int64"/>
         <field name="prevModifiedTime" docfield="prevModifiedTime" type="int64"/>
         <field name="batchId" docfield="batchId" type="string"/>
-        
+        <field name="host" docfield="host" type="string"/>
+
         <!-- parse fields -->
         <field name="title" docfield="title" type="string"/>
         <field name="text" docfield="text" type="binary"/>
