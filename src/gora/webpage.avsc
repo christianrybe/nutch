@@ -278,7 +278,16 @@
       ],
       "doc": "A batchId that this WebPage is assigned to. WebPage's are fetched in batches, called fetchlists. Pages are partitioned but can always be associated and fetched alongside pages of similar value (within a crawl cycle) based on batchId.",
       "default": null
-    }
+    },
+      {
+        "name": "host",
+        "type": [
+          "null",
+          "string"
+        ],
+        "doc": "The host part of the URL of the website.",
+        "default": null
+      }
   ]
 }
 
