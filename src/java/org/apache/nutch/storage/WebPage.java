@@ -40,8 +40,8 @@ public class WebPage extends org.apache.gora.persistency.impl.PersistentBase
         14, "text"), PARSE_STATUS(15, "parseStatus"), SCORE(16, "score"), REPR_URL(
         17, "reprUrl"), HEADERS(18, "headers"), OUTLINKS(19, "outlinks"), INLINKS(
         20, "inlinks"), MARKERS(21, "markers"), METADATA(22, "metadata"), BATCH_ID(
-        23, "batchId"), HOST(24, "host");
-    /**`
+        23, "batchId"), ;
+    /**
      * Field's index.
      */
     private int index;
@@ -227,8 +227,6 @@ public class WebPage extends org.apache.gora.persistency.impl.PersistentBase
    */
   private java.lang.CharSequence batchId;
 
-  private java.lang.CharSequence host;
-
   public org.apache.avro.Schema getSchema() {
     return SCHEMA$;
   }
@@ -284,8 +282,6 @@ public class WebPage extends org.apache.gora.persistency.impl.PersistentBase
       return metadata;
     case 23:
       return batchId;
-    case 24:
-      return host;
     default:
       throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
@@ -377,9 +373,6 @@ public class WebPage extends org.apache.gora.persistency.impl.PersistentBase
     case 23:
       batchId = (java.lang.CharSequence) (value);
       break;
-    case 24:
-      host = (java.lang.CharSequence) (value);
-      break;
     default:
       throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
@@ -409,33 +402,6 @@ public class WebPage extends org.apache.gora.persistency.impl.PersistentBase
    */
   public boolean isBaseUrlDirty(java.lang.CharSequence value) {
     return isDirty(0);
-  }
-
-  /**
-   * Gets the value of the 'host' field. The original associated with this
-   * WebPage.
-   */
-  public java.lang.CharSequence getHost() {
-    return host;
-  }
-
-  /**
-   * Sets the value of the 'host' field. The original associated with this
-   * WebPage
-   * @param value the value to set
-   */
-  public void setHost(java.lang.CharSequence value) {
-    this.host = value;
-    setDirty(24);
-  }
-
-  /**
-   * Checks the dirty status of the 'host' field. A field is dirty if it
-   * represents a change that has not yet been written to the database. The
-   * original associated with this WebPage. * @param value the value to set.
-   */
-  public boolean isHostDirty(java.lang.CharSequence value) {
-    return isDirty(24);
   }
 
   /**
@@ -1258,7 +1224,6 @@ public class WebPage extends org.apache.gora.persistency.impl.PersistentBase
     private java.util.Map<java.lang.CharSequence, java.lang.CharSequence> markers;
     private java.util.Map<java.lang.CharSequence, java.nio.ByteBuffer> metadata;
     private java.lang.CharSequence batchId;
-    private java.lang.CharSequence host;
 
     /** Creates a new Builder */
     private Builder() {
@@ -1393,11 +1358,6 @@ public class WebPage extends org.apache.gora.persistency.impl.PersistentBase
             fields()[23].schema(), other.batchId);
         fieldSetFlags()[23] = true;
       }
-      if (isValidValue(fields()[24], other.host)) {
-        this.host = (java.lang.CharSequence) data().deepCopy(
-                fields()[24].schema(), other.host);
-        fieldSetFlags()[24] = true;
-      }
     }
 
     /** Gets the value of the 'baseUrl' field */
@@ -1423,38 +1383,6 @@ public class WebPage extends org.apache.gora.persistency.impl.PersistentBase
     public org.apache.nutch.storage.WebPage.Builder clearBaseUrl() {
       baseUrl = null;
       fieldSetFlags()[0] = false;
-      return this;
-    }
-
-    /**
-     * Gets the value of the 'host' field. The original associated with this
-     * WebPage.
-     */
-    public java.lang.CharSequence getHost() {
-      return host;
-    }
-
-    /**
-     * Sets the value of the 'host' field. The original associated with this
-     * WebPage
-     * @param value the value to set
-     */
-    public org.apache.nutch.storage.WebPage.Builder setHost(java.lang.CharSequence value) {
-      validate(fields()[24], value);
-      this.host = value;
-      fieldSetFlags()[24] = true;
-      return this;
-    }
-
-    /** Checks whether the 'baseUrl' field has been set */
-    public boolean hasHost() {
-      return fieldSetFlags()[24];
-    }
-
-    /** Clears the value of the 'baseUrl' field */
-    public org.apache.nutch.storage.WebPage.Builder clearHost() {
-      host = null;
-      fieldSetFlags()[24] = false;
       return this;
     }
 
@@ -2099,8 +2027,6 @@ public class WebPage extends org.apache.gora.persistency.impl.PersistentBase
                 (java.util.Map) defaultValue(fields()[22]));
         record.batchId = fieldSetFlags()[23] ? this.batchId
             : (java.lang.CharSequence) defaultValue(fields()[23]);
-        record.host = fieldSetFlags()[24] ? this.host
-                : (java.lang.CharSequence) defaultValue(fields()[24]);
         return record;
       } catch (Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);
@@ -2150,34 +2076,6 @@ public class WebPage extends org.apache.gora.persistency.impl.PersistentBase
     public boolean isBaseUrlDirty(java.lang.CharSequence value) {
       throw new java.lang.UnsupportedOperationException(
           "IsDirty is not supported on tombstones");
-    }
-
-    /**
-     * Gets the value of the 'baseUrl' field. The original associated with this
-     * WebPage.
-     */
-    public java.lang.CharSequence getHost() {
-      throw new java.lang.UnsupportedOperationException(
-              "Get is not supported on tombstones");
-    }
-
-    /**
-     * Sets the value of the 'baseUrl' field. The original associated with this
-     * WebPage. * @param value the value to set.
-     */
-    public void setHost(java.lang.CharSequence value) {
-      throw new java.lang.UnsupportedOperationException(
-              "Set is not supported on tombstones");
-    }
-
-    /**
-     * Checks the dirty status of the 'baseUrl' field. A field is dirty if it
-     * represents a change that has not yet been written to the database. The
-     * original associated with this WebPage. * @param value the value to set.
-     */
-    public boolean isHostDirty(java.lang.CharSequence value) {
-      throw new java.lang.UnsupportedOperationException(
-              "IsDirty is not supported on tombstones");
     }
 
     /**
