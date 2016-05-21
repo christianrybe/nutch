@@ -159,7 +159,7 @@ public class InjectorJob extends NutchTool implements Tool {
         String reversedUrl = TableUtil.reverseUrl(url); // collect it
         WebPage row = WebPage.newBuilder().build();
         try {
-          row.setHost(new Utf8(new URI(url).getHost()));
+          row.setHost(new Utf8(new URI(url.replace(" ", "%20")).getHost()));
         } catch (URISyntaxException e) {
           LOG.error("Cannot parse the URL!", e);
         }

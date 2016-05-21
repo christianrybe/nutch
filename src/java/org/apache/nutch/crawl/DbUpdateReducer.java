@@ -236,7 +236,7 @@ GoraReducer<UrlWithScore, NutchWritable, String, WebPage> {
     }
 
     try {
-      page.setHost(new Utf8(new URI(url).getHost()));
+      page.setHost(new Utf8(new URI(url.replace(" ", "%20")).getHost()));
     } catch (URISyntaxException e) {
       LOG.error("Cannot parse the URL!", e);
     }
