@@ -234,13 +234,12 @@ GoraReducer<UrlWithScore, NutchWritable, String, WebPage> {
       Mark.UPDATEDB_MARK.putMark(page, parse_mark);
       Mark.PARSE_MARK.removeMark(page);
     }
-    URI uri = null;
+
     try {
-      uri = new URI(url);
+      page.setHost(new Utf8(new URI(url).getHost()));
     } catch (URISyntaxException e) {
-      LOG.error("Cannot extract host from the URL!", e);
+      LOG.error("Cannot parse the URL!", e);
     }
-    page.setHost(new Utf8(uri.getHost()));
 
     context.write(keyUrl, page);
   }

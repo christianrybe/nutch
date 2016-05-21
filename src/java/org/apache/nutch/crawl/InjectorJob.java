@@ -158,13 +158,11 @@ public class InjectorJob extends NutchTool implements Tool {
       } else { // if it passes
         String reversedUrl = TableUtil.reverseUrl(url); // collect it
         WebPage row = WebPage.newBuilder().build();
-        URI uri = null;
         try {
-          uri = new URI(url);
+          row.setHost(new Utf8(new URI(url).getHost()));
         } catch (URISyntaxException e) {
-          LOG.error("Cannot parse the URI", e);
+          LOG.error("Cannot parse the URL!", e);
         }
-        row.setHost(new Utf8(uri.getHost()));
         row.setFetchTime(curTime);
         row.setFetchInterval(customInterval);
 
