@@ -16,13 +16,9 @@
  ******************************************************************************/
 package org.apache.nutch.crawl;
 
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.avro.util.Utf8;
 import org.apache.gora.mapreduce.GoraReducer;
+import org.apache.gora.store.DataStore;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.io.Writable;
 import org.apache.hadoop.util.StringUtils;
@@ -32,12 +28,18 @@ import org.apache.nutch.scoring.ScoreDatum;
 import org.apache.nutch.scoring.ScoringFilterException;
 import org.apache.nutch.scoring.ScoringFilters;
 import org.apache.nutch.storage.Mark;
+import org.apache.nutch.storage.StorageUtils;
 import org.apache.nutch.storage.WebPage;
 import org.apache.nutch.util.TableUtil;
 import org.apache.nutch.util.WebPageWritable;
-import org.apache.nutch.storage.StorageUtils;
-import org.apache.gora.store.DataStore;
 import org.slf4j.Logger;
+
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DbUpdateReducer extends
 GoraReducer<UrlWithScore, NutchWritable, String, WebPage> {
@@ -232,6 +234,13 @@ GoraReducer<UrlWithScore, NutchWritable, String, WebPage> {
       Mark.UPDATEDB_MARK.putMark(page, parse_mark);
       Mark.PARSE_MARK.removeMark(page);
     }
+    URI uri = null;
+    try {
+      uri = new URI(url);
+    } catch (URISyntaxException e) {
+      LOG.error("Cannot extract host from the URL!", e);
+    }
+    page.setHost(new Utf8(uri.getHost()));
 
     context.write(keyUrl, page);
   }
