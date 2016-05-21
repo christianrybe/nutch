@@ -49,3 +49,6 @@
 
 # accept URLs ending with .uk
 +(.*\.uk.*)
+
+# accept URLs ending with .org (to accept DMOZ database)
++(.*\.org.*)
