@@ -36,7 +36,6 @@ import org.slf4j.Logger;
 
 import java.io.IOException;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
@@ -237,7 +236,7 @@ GoraReducer<UrlWithScore, NutchWritable, String, WebPage> {
 
     try {
       page.setHost(new Utf8(new URI(url.replace(" ", "%20")).getHost()));
-    } catch (URISyntaxException e) {
+    } catch (Exception e) {
       LOG.error("Cannot parse the URL!", e);
     }
 
